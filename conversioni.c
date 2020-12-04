@@ -33,7 +33,6 @@ int main(void){
             break;
         case 3:
             converti_in_esadecimale(decimale);
-  
             break;
     }
 
@@ -60,7 +59,6 @@ int menu(void){
     return scelta;
 }
 
-
 /* Converti in binario */
 void converti_in_binario(int num){
 
@@ -81,9 +79,10 @@ void converti_in_binario(int num){
         printf("%d", bit);
 
     }
-
     printf(" (2)\n");
 }
+
+/* Converti in ottale */
 void converti_in_ottale(int num){
 
     int peso = 64;
@@ -96,10 +95,10 @@ void converti_in_ottale(int num){
         num %= peso;
         peso /= 8;
     }
-
     printf(" (8)\n");
 }
 
+/* Converti in esadecimale */
 void converti_in_esadecimale(int num){
 
     int peso = 64;
@@ -107,6 +106,7 @@ void converti_in_esadecimale(int num){
     int i;
 
     peso = 16;
+
     for (i = 0; i < 2; i++) {
         bit = num / peso;
         switch(bit) {
@@ -146,6 +146,5 @@ void converti_in_esadecimale(int num){
         num %= peso;
         peso /= 16;
     }
-
     printf(" (16)\n");
 }
