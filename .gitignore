@@ -4,6 +4,7 @@
 # Object files
 *.o
 conversioni
+conversioni2
 *.ko
 *.obj
 *.elf

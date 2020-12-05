@@ -3,9 +3,7 @@
 /*Prototipi*/
 int menu(void);
 
-void converti_in_binario(int num);
-void converti_in_esadecimale(int num);
-void converti_in_ottale(int num);
+void converti(int numint, int base);
 
 int main(void){
 
@@ -26,13 +24,13 @@ int main(void){
 
     switch (scelta){
         case 1:
-            converti_in_binario(decimale);
+            converti(decimale, 2);
             break;
         case 2:
-            converti_in_ottale(decimale);
+            converti(decimale, 8);
             break;
         case 3:
-            converti_in_esadecimale(decimale);
+            converti(decimale, 16);
             break;
     }
 
@@ -60,29 +58,81 @@ int menu(void){
 }
 
 /* Converti in binario */
-void converti_in_binario(int num){
+void converti(int num, int base){
 
-    int peso = 128;
+    int peso;
+    int posti;
     int bit;
     int i;
+    int count = 0;
 
-    for (i = 0; i < 8; i++) {
-        if (num >= peso) {
-            num -= peso;
-            bit = 1;
-        }
-        else {
-            bit = 0;
-        }
-
-        peso /= 2;
-        printf("%d", bit);
-
+    switch (base){
+        case 2:
+            peso = 128;
+            posti = 8;
+            break;
+        case 8:
+            peso = 64;
+            posti = 3;
+            break;
+        case 16:
+            peso = 16;
+            posti = 2;
+            break;
+        default:
+            printf("Base deve essere 2, 8 oppure 16!\n");
+            count = 1;
+            break;
     }
-    printf(" (2)\n");
+
+    if (count == 1){
+        return;
+    }
+
+    for (i = 0; i < posti; i++){
+        bit = num / peso;
+        num %= peso;
+        peso /= base;
+
+        switch (bit){
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                printf("%d", bit);
+            break;
+            case 10:
+                printf("A");
+            break;
+            case 11:
+                printf("B");
+            break;
+            case 12:
+                printf("C");
+            break;
+            case 13:
+                printf("D");
+            break;
+            case 14:
+                printf("E");
+            break;
+            case 15:
+                printf("F");
+            break;
+            default:
+                printf(" ");
+        }
+    }
+    printf(" (%d)\n", base);
 }
 
-/* Converti in ottale */
+/* Converti in ottale 
 void converti_in_ottale(int num){
 
     int peso = 64;
@@ -91,14 +141,14 @@ void converti_in_ottale(int num){
 
     for (i = 0; i < 3; i++) {
         bit = num / peso;
-        printf("%2d", bit);
         num %= peso;
         peso /= 8;
+        printf("%2d", bit);
     }
     printf(" (8)\n");
-}
+}*/
 
-/* Converti in esadecimale */
+/* Converti in esadecimale 
 void converti_in_esadecimale(int num){
 
     int peso = 16;
@@ -107,6 +157,9 @@ void converti_in_esadecimale(int num){
 
     for (i = 0; i < 2; i++) {
         bit = num / peso;
+        num %= peso;
+        peso /= 16;
+
         switch(bit) {
             case 0:
             case 1:
@@ -141,8 +194,6 @@ void converti_in_esadecimale(int num){
             default:
                 printf(" ");
         }
-        num %= peso;
-        peso /= 16;
     }
     printf(" (16)\n");
-}
+}*/
