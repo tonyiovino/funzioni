@@ -3,7 +3,7 @@
 /*Prototipi*/
 int menu(void);
 
-void converti(int numint, int base);
+void converti(int num, int base);
 
 int main(void){
 
@@ -131,69 +131,3 @@ void converti(int num, int base){
     }
     printf(" (%d)\n", base);
 }
-
-/* Converti in ottale 
-void converti_in_ottale(int num){
-
-    int peso = 64;
-    int bit;
-    int i;
-
-    for (i = 0; i < 3; i++) {
-        bit = num / peso;
-        num %= peso;
-        peso /= 8;
-        printf("%2d", bit);
-    }
-    printf(" (8)\n");
-}*/
-
-/* Converti in esadecimale 
-void converti_in_esadecimale(int num){
-
-    int peso = 16;
-    int bit;
-    int i;
-
-    for (i = 0; i < 2; i++) {
-        bit = num / peso;
-        num %= peso;
-        peso /= 16;
-
-        switch(bit) {
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-                printf("%d", bit);
-            break;
-            case 10:
-                printf("A");
-            break;
-            case 11:
-                printf("B");
-            break;
-            case 12:
-                printf("C");
-            break;
-            case 13:
-                printf("D");
-            break;
-            case 14:
-                printf("E");
-            break;
-            case 15:
-                printf("F");
-            break;
-            default:
-                printf(" ");
-        }
-    }
-    printf(" (16)\n");
-}*/
