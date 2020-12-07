@@ -57,7 +57,7 @@ int menu(void){
     return scelta;
 }
 
-/* Converti in binario */
+/* Converti */
 void converti(int num, int base){
 
     int peso;
