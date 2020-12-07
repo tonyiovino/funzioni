@@ -20,8 +20,6 @@ int main(void){
 
     scelta = menu();
 
-    printf("Scelta: %d\n", scelta);
-
     switch (scelta){
         case 1:
             converti(decimale, 2);
