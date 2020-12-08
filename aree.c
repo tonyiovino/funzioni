@@ -1,6 +1,8 @@
 #include <stdio.h>
 
 /* Prototipi */
+int menu(void);
+
 double area_quadrato(double lato);
 double area_cerchio(double raggio);
 
@@ -13,6 +15,41 @@ int main(){
 
     printf("Calcola l'area di figure geometriche\n\n");
 
+    scelta = menu();
+
+    switch (scelta){
+        case 1:
+            do {
+                printf("Inserire il lato: ");
+                scanf("%le", &lato);
+                putchar('\n');
+            } while (lato < 0);
+
+            area = area_quadrato(lato);
+            printf("%f\n", area);
+
+            break;
+
+        case 2:
+            do {
+                printf("Inserire il raggio: ");
+                scanf("%le", &raggio);
+                putchar('\n');
+            } while (raggio < 0);
+
+            area = area_cerchio(raggio);
+            printf("%f\n", area);
+
+            break;
+    }
+
+    return 0;
+}
+
+int menu(void){
+
+    int scelta;
+
     do {
         printf("\nScegli la figura geometrica:\n"
                 "1) Quadrato\n"
@@ -24,22 +61,7 @@ int main(){
 
     } while(scelta < 1 || scelta > 2);
 
-    switch (scelta){
-        case 1:
-            printf("Inserire il lato: ");
-            scanf("%le", &lato);
-            area = area_quadrato(lato);
-            printf("%f\n", area);
-            break;
-        case 2:
-            printf("Inserire il raggio: ");
-            scanf("%le", &raggio);
-            area = area_cerchio(raggio);
-            printf("%f\n", area);
-            break;
-    }
-
-    return 0;
+    return scelta;
 }
 
 double area_quadrato(double lato){
