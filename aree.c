@@ -21,24 +21,24 @@ int main(){
         case 1:
             do {
                 printf("Inserire il lato: ");
-                scanf("%le", &lato);
+                scanf("%lf", &lato);
                 putchar('\n');
             } while (lato < 0);
 
             area = area_quadrato(lato);
-            printf("%f\n", area);
+            printf("%.2f\n", area);
 
             break;
 
         case 2:
             do {
                 printf("Inserire il raggio: ");
-                scanf("%le", &raggio);
+                scanf("%lf", &raggio);
                 putchar('\n');
             } while (raggio < 0);
 
             area = area_cerchio(raggio);
-            printf("%f\n", area);
+            printf("%.2f\n", area);
 
             break;
     }
