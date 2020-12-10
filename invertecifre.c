@@ -42,13 +42,7 @@ void invertiPositivo(int num){
 
 void invertiNegativo(int num){
 
-    int cifra;
-
     putchar('-');
     num *= -1;
-    while (num > 0){
-        cifra = num % 10;
-        printf("%d", cifra);
-        num /= 10;
-    }
+    invertiPositivo(num);
 }
