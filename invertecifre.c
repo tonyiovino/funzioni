@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-void invertiPositivo(int num);
-void invertiNegativo(int num);
+int inverti_cifre(int num);
 
 int main(){
 
@@ -12,37 +11,25 @@ int main(){
     printf("Inserisci un numero: ");
     scanf("%d", &num);
 
-    printf("A cifre invertite: ");
+    num = inverti_cifre(num);
 
-    if (num > 0){
-        invertiPositivo(num);
-    }
-    else if(num < 0){
-        invertiNegativo(num);
-    }
-    else{
-        printf("0");
-    }
+    printf("A cifre invertite: %d", num);
 
     putchar('\n');
 
     return 0;
 }
 
-void invertiPositivo(int num){
+int inverti_cifre(int num){
 
+    int numInverso = 0;
     int cifra;
 
     while (num > 0){
         cifra = num % 10;
-        printf("%d", cifra);
+        numInverso = (numInverso * 10) + cifra;
         num /= 10;
     }
-}
 
-void invertiNegativo(int num){
-
-    putchar('-');
-    num *= -1;
-    invertiPositivo(num);
+    return numInverso;
 }
