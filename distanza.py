@@ -9,7 +9,7 @@ def distanza(punto1, punto2):
   dx = punto1[0] - punto2[0]
   dy = punto1[1] - punto2[1]
 
-  distanza = math.sqrt(dx + dy)
+  distanza = math.sqrt(dx**2 + dy**2)
 
   return distanza
 
