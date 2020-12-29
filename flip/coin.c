@@ -1,6 +1,5 @@
 #include "coin.h"
 #include "random.h"
-#include <stdio.h>
 
 int coin_lancio(void){
 
