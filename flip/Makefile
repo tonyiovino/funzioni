@@ -6,6 +6,7 @@ main: random.o coin.o main.o
 
 main.o: main.c random.h coin.h
 random.o: random.c random.h
+coin.o: coin.c coin.h
 
 .PHONY: clean
 clean:
