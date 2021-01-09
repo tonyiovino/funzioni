@@ -1,20 +1,20 @@
 #include <stdio.h>
-#include "random.h"
 #include "coin.h"
 
-int lancio_cento_volte(void);
+int simulazione_moneta(int volte);
 
 int main(void){
 
   int testa, croce;
+  int volte = 100;
 
-  random_init();
+  coin_init();
 
   printf("Su 100 lanci, quante volte escono \"Testa\" e \"Croce\"?\n\n");
 
-  testa = lancio_cento_volte();
+  testa = simulazione_moneta(volte);
 
-  croce = 100 - testa;
+  croce = volte - testa;
 
   printf("Volte Testa: %d\n", testa);
   printf("Volte Croce: %d\n", croce);
@@ -22,11 +22,11 @@ int main(void){
   return 0;
 }
 
-int lancio_cento_volte(void){
+int simulazione_moneta(int volte){
 
   int i, count = 0;
 
-  for (i = 0; i < 100; i++){
+  for (i = 0; i < volte; i++){
     if ( coin_lancio() == 1 ) count++; /*È Testa Se Esce 1*/
   }
 
