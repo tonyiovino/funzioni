@@ -4,7 +4,7 @@ LDLIBS=
 
 main: random.o dado.o main.o
 
-main.o: main.c random.h dado.h
+main.o: main.c dado.h
 random.o: random.c random.h
 dado.o : dado.c dado.h random.h
 
