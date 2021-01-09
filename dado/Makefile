@@ -6,6 +6,7 @@ main: random.o dado.o main.o
 
 main.o: main.c random.h dado.h
 random.o: random.c random.h
+dado.o : dado.c dado.h random.h
 
 .PHONY: clean
 clean:

@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "random.h"
 #include "dado.h"
 
 void simula_dado(int volte);
@@ -7,7 +6,7 @@ void stampa_asterischi(int num);
 
 int main(){
 
-    random_init();
+    dado_init();
 
     simula_dado(100);
 
@@ -39,7 +38,7 @@ void stampa_asterischi(int num){
     int i;
 
     for (i = 0; i < num; i++) {
-        printf("*");
+        putchar('*');
     }
-    printf("\n");
+    putchar('\n');
 }
