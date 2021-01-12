@@ -31,12 +31,7 @@ void ritenta_se_errore(int a, int b, int risposta_esatta){
         printf("Quanto fa %d per %d? (CTRL+C per uscire)\nRisposta: ", a, b);
         scanf("%d", &risposta);
 
-        if (risposta == risposta_esatta) {
-            printf("Very Good!\n"); /* void risposta_giusta(void)*/
-        }
-        else {
-            printf("No. Please Try Again\n"); /* void risposta_errata(void) */
-        }
+        cai_generate_string(risposta, risposta_esatta);
 
         putchar('\n');
 
