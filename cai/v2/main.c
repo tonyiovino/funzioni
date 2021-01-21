@@ -2,13 +2,13 @@
 #include "cai.h"
 
 int rispondi_e_controlla(int a, int b, int risposta_esatta, int num_domande);
-void controlla_risposte_esatte(int num_esatte, int num_domande);
+void controlla_risposte_esatte(double num_esatte, int num_domande);
 
 int main(){
 
     int a, b;
     int risposta_esatta;
-    int num_esatte = 0;
+    double num_esatte = 0;
     int num_domande = 10, num_risposte = 0;
 
     cai_init();
@@ -32,7 +32,7 @@ int main(){
 int rispondi_e_controlla(int a, int b, int risposta_esatta, int num_domande){
 
     int risposta;
-    static int num_esatte = 0;
+    int num_esatte = 0;
 
     printf("Quanto fa %d per %d? (CTRL+C per uscire)\nRisposta: ", a, b);
     scanf("%d", &risposta);
@@ -45,12 +45,13 @@ int rispondi_e_controlla(int a, int b, int risposta_esatta, int num_domande){
 
 /* VEDI SE FUNZIONA  */
 
-void controlla_risposte_esatte(int num_esatte, int num_domande){
+void controlla_risposte_esatte(double num_esatte, int num_domande){
+
 
     /* A : B = X : 100 ==> X = (A : 100) x B */
-    int percentuale = num_esatte * num_domande;
+    double percentuale = (num_esatte / num_domande) * 100;
 
-    printf("Your rate is: %d\n", percentuale);
+    printf("Your rate is: %.f%%\n", percentuale);
 
     if (percentuale < 75) printf("Please ask your instructor for extra help");
 
