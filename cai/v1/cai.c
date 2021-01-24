@@ -2,7 +2,6 @@
 #include "random.h"
 #include <stdio.h>
 
-int cai_generate_num(int min, int max);
 void cai_risposta_esatta(int num);
 void cai_risposta_errata(int num);
 

@@ -2,6 +2,9 @@
 #include "random.h"
 #include <stdio.h>
 
+void cai_risposta_esatta(int num);
+void cai_risposta_errata(int num);
+
 void cai_init(void){
     random_init();
 }
