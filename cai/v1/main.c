@@ -10,15 +10,14 @@ int main(){
 
     cai_init();
 
-    do {
+    while (1){
         a = cai_generate_num(0, 10);
         b = cai_generate_num(0, 10);
 
         risposta_esatta = a * b;
 
         ritenta_se_errore(a, b, risposta_esatta);
-
-    } while (1);
+    } 
 
     return 0;
 }
