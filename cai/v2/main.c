@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "cai.h"
 
-int rispondi_e_controlla(int a, int b, int risposta_esatta, int num_domande);
-void controlla_risposte_esatte(double num_esatte, int num_domande);
+int rispondi_e_controlla(int a, int b, int risposta_esatta);
+void controlla_risposte_esatte(int num_esatte, int num_domande);
 
 int main(){
 
@@ -19,7 +19,7 @@ int main(){
 
         risposta_esatta = a * b;
 
-        num_esatte += rispondi_e_controlla(a, b, risposta_esatta, num_domande);
+        num_esatte += rispondi_e_controlla(a, b, risposta_esatta);
         num_risposte++;
 
     } while (num_risposte < num_domande);
@@ -29,7 +29,7 @@ int main(){
     return 0;
 }
 
-int rispondi_e_controlla(int a, int b, int risposta_esatta, int num_domande){
+int rispondi_e_controlla(int a, int b, int risposta_esatta){
 
     int risposta;
     int num_esatte = 0;
@@ -43,11 +43,11 @@ int rispondi_e_controlla(int a, int b, int risposta_esatta, int num_domande){
     return num_esatte;
 }
 
-void controlla_risposte_esatte(double num_esatte, int num_domande){
+void controlla_risposte_esatte(int num_esatte, int num_domande){
 
-    double percentuale = (num_esatte / num_domande) * 100;
+    double percentuale = ( (double)num_esatte / (double)num_domande ) * 100;
 
-    printf("Your rate is: %.f%%\n", percentuale);
+    printf("Your rate is: %.2f%%\n", percentuale);
 
     if (percentuale < 75) printf("Please ask your instructor for extra help");
 

@@ -24,7 +24,6 @@ int cai_generate_string(int risposta, int risposta_esatta){
 
     int num = cai_generate_num(1, 4);
     int num_esatte = 0;
-    int num_errate = 0;
 
     if (risposta == risposta_esatta){
         cai_risposta_esatta(num);
