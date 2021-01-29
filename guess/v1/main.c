@@ -36,7 +36,7 @@ int estrai_e_controlla(int numero){
         printf("Tentativo: ");
         scanf("%d", &tentativo);
 
-        indovinato = guess_controlla_numero(numero, tentativo);
+        indovinato = guess_controlla_numero_e_restituisci(numero, tentativo);
 
         putchar('\n');
 
