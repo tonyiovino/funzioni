@@ -19,7 +19,7 @@ int guess_generate_num(int min, int max){
 
 int guess_controlla_numero_e_restituisci(int numero, int tentativo){
 
-    int count = 0;
+    int indovinato = 0;
 
     if (tentativo > numero){
         printf("Too high. Try again.\n");
@@ -29,8 +29,8 @@ int guess_controlla_numero_e_restituisci(int numero, int tentativo){
     }
     else {
         printf("Excellent! You guess the number!\nWould you like to play again (y or n)?");
-        count = 1;
+        indovinato = 1;
     }
 
-    return count;
+    return indovinato;
 }
