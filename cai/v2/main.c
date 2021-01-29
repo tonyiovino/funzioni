@@ -32,15 +32,15 @@ int main(){
 int rispondi_e_controlla(int a, int b, int risposta_esatta){
 
     int risposta;
-    int num_esatte = 0;
+    int esatta = 0;
 
     printf("Quanto fa %d per %d? (CTRL+C per uscire)\nRisposta: ", a, b);
     scanf("%d", &risposta);
 
-    num_esatte += cai_generate_string(risposta, risposta_esatta);
+    esatta = cai_check_result_and_generate_string(risposta, risposta_esatta);
     putchar('\n');
 
-    return num_esatte;
+    return esatta;
 }
 
 void controlla_risposte_esatte(int num_esatte, int num_domande){

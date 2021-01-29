@@ -20,14 +20,14 @@ int cai_generate_num(int min, int max){
     return num;
 }
 
-int cai_generate_string(int risposta, int risposta_esatta){
+int cai_check_result_and_generate_string(int risposta, int risposta_esatta){
 
     int num = cai_generate_num(1, 4);
-    int num_esatte = 0;
+    int esatta = 0;
 
     if (risposta == risposta_esatta){
         cai_risposta_esatta(num);
-        num_esatte++;
+        esatta = 1;
     }
 
     else {
@@ -36,7 +36,7 @@ int cai_generate_string(int risposta, int risposta_esatta){
 
     putchar('\n');
 
-    return num_esatte;
+    return esatta;
 }
 
 void cai_risposta_esatta(int num){
