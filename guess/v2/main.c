@@ -1,58 +1,91 @@
 #include <stdio.h>
 #include "guess.h"
 
-int estrai_e_controlla(int numero);
+int estrai_controlla_e_punti(int numero, int punti);
+/*void salvataggio_partita(void);*/
 
 int main(){
 
     int numero;
-    int scelta;
+    char scelta;
+    int punti = 0;
 
     guess_init();
 
+    /* INIZIO GIOCO */
     do {
-        printf("I have a number between 1 and 1000.\n"
+        printf("Your points: %d\n", punti);
+        printf("\nI have a number between 1 and 1000.\n"
             "Can you guess my number?\n"
             "Please type your first guess.\n\n");
 
         numero = guess_generate_num(1, 1000);
 
-        scelta = estrai_e_controlla(numero);
+        punti = estrai_controlla_e_punti(numero, punti);
 
-        putchar('\n');
+        printf("Would you like to play again? (y or n)\n");
+        printf("Choice: ");
+        if (getchar() == '\n') scelta = getchar();
 
     } while (scelta == 'y');
 
-    printf("Good Bye!\n");
+    printf("Do you want save the game? (y or n)");
+    if (getchar() == '\n') scelta = getchar();
+
+    if (scelta == 'y') {
+        /*salvataggio_partita();*/
+    }
+    else {
+        printf("Good Bye!\n");
+    }    
 
     return 0;
 }
 
-int estrai_e_controlla(int numero){
+int estrai_controlla_e_punti(int numero, int punti){
 
-    int i = 0;
+    int tentativi_max = 10, num_tentativi = 0;
     int tentativo;
     int indovinato;
-    char scelta;
 
+    /* Temntativi */
     do {
-        if (! (i < 10) ){
-            printf("\nYou have exceeded the limit of attempts (10)\n");
+        /* Raggiunto il limite dei tentativi */
+        if (! (num_tentativi < tentativi_max) ){
+            printf("\nYou have exceeded the limit of attempts (%d)\n", tentativi_max);
             printf("The number was %d\n\n", numero);
+            punti += rm_punti(tentativi_max, num_tentativi);
             break;
         }
 
-        printf("Tentativo %d: ", ++i);
+        printf("Tentativo %d: ", ++num_tentativi);
         scanf("%d", &tentativo);
 
-        indovinato = guess_controlla_numero(numero, tentativo);
+        indovinato = guess_controlla_numero_e_restituisci(numero, tentativo, num_tentativi);
+
         putchar('\n');
+
+        if (indovinato == 1) punti += add_punti(tentativi_max, num_tentativi);
 
     } while (indovinato != 1);
 
-    printf("Would you like to play again? (y or n)\n");
-    printf("Choice: ");
-    scanf("%s", &scelta);
-
-    return scelta;
+    return punti;
 }
+
+/*void salvataggio_partita(void){
+
+    FILE *file_punti;
+    int scelta;
+    int nome_salvataggio;
+
+    printf("Do you want save the game? (y or n)");
+    if (getchar() == '\n') scelta = getchar();
+
+    if (scelta == 'y') {
+        printf("Nome salvataggio: ");
+        scanf("%d", nome_salvataggio);
+    }
+    else {
+        printf("Tutti i tuoi progressi andranno persi!");
+    }
+}*/

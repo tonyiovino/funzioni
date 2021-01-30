@@ -28,7 +28,7 @@ int guess_controlla_numero_e_restituisci(int numero, int tentativo){
         printf("Too low. Try again.\n");
     }
     else {
-        printf("Excellent! You guess the number!\nWould you like to play again (y or n)?");
+        printf("Excellent! You guess the number!\n");
         indovinato = 1;
     }
 

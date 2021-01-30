@@ -18,7 +18,9 @@ int main(){
         numero = guess_generate_num(1, 1000);
 
         scelta = estrai_e_controlla(numero);
+
         putchar('\n');
+
     } while (scelta == 'y');
 
     printf("Good Bye!\n");
@@ -42,8 +44,9 @@ int estrai_e_controlla(int numero){
 
     } while (indovinato != 1);
 
-    printf("Scelta: ");
-    scanf("%s", &scelta);
+    printf("Would you like to play again (y or n)?");
+    printf("Choice: ");
+    if (getchar() == '\n') scelta = getchar();
 
     return scelta;
 }
