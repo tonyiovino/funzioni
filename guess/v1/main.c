@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <sys/types.h>
 #include "guess.h"
 
 void tenta_e_controlla_indovinato(int numero);
@@ -52,9 +53,14 @@ int rigioca(void){
 
     char scelta;
 
-    printf("Would you like to play again (y or n)?\n");
-    printf("Choice: ");
-    if (getchar() == '\n') scelta = getchar();
+    do {
+        printf("Would you like to play again (y or n)?\n");
+        printf("Choice: ");
+
+        if (getchar() == '\n') scelta = getchar();
+
+        putchar('\n');
+    } while (scelta != 'y' || scelta != 'n');
 
     return scelta;
 }

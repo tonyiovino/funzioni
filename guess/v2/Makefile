@@ -2,11 +2,12 @@ CC=gcc
 CFLAGS=-Wall -pedantic
 LDLIBS=
 
-main: random.o guess.o main.o
+main: random.o guess.o main.o save.o
 
 main.o: main.c guess.h
 random.o: random.c random.h
-guess.o : guess.c guess.h random.h
+guess.o: guess.c guess.h random.h
+save.o: save.c save.h
 
 .PHONY: clean
 clean:
