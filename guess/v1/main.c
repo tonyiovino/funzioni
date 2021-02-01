@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include "guess.h"
 
-int estrai_e_controlla(int numero);
+void tenta_e_controlla_indovinato(int numero);
+int rigioca(void);
 
 int main(){
 
     int numero;
-    int scelta;
+    char scelta;
 
     guess_init();
 
@@ -17,7 +18,9 @@ int main(){
 
         numero = guess_generate_num(1, 1000);
 
-        scelta = estrai_e_controlla(numero);
+        tenta_e_controlla_indovinato(numero);
+
+        scelta = rigioca();
 
         putchar('\n');
 
@@ -28,23 +31,28 @@ int main(){
     return 0;
 }
 
-int estrai_e_controlla(int numero){
+void tenta_e_controlla_indovinato(int numero){
 
     int tentativo;
     int indovinato;
-    char scelta;
 
     do {
         printf("Tentativo: ");
         scanf("%d", &tentativo);
 
-        indovinato = guess_controlla_numero_e_restituisci(numero, tentativo);
+        indovinato = guess_controlla_numero(numero, tentativo);
 
         putchar('\n');
 
     } while (indovinato != 1);
 
-    printf("Would you like to play again (y or n)?");
+}
+
+int rigioca(void){
+
+    char scelta;
+
+    printf("Would you like to play again (y or n)?\n");
     printf("Choice: ");
     if (getchar() == '\n') scelta = getchar();
 

@@ -17,7 +17,7 @@ int guess_generate_num(int min, int max){
     return num;
 }
 
-int guess_controlla_numero_e_restituisci(int numero, int tentativo){
+int guess_controlla_numero(int numero, int tentativo){
 
     int indovinato = 0;
 
