@@ -100,17 +100,17 @@ int guess_rm_punti(int tentativi_max, int num_tentativi){
 
 void guess_print_vittoria(int moltiplicatore){
 
-    if (moltiplicatore == 10) {
+    if (moltiplicatore == 100) {
         printf("\n"
             "************************\n"
             "*  Hai fatto Jackpot!  *\n"
             "************************\n\n"
         );
     }
-    else if (moltiplicatore >= 5) {
+    else if (moltiplicatore >= 50) {
         printf("Hai avuto molta fortuna!\n");
     }
-    else if (moltiplicatore >= 2) {
+    else if (moltiplicatore >= 20) {
         printf(
             "Non è il massimo, ma magari la fortuna ti\n"
             "assisterà la prossima volta!\n"
@@ -123,13 +123,13 @@ void guess_print_vittoria(int moltiplicatore){
 
 void guess_print_sconfitta(int moltiplicatore){
 
-    if (moltiplicatore == 10) {
+    if (moltiplicatore == 100) {
         printf("Non so che dirti... Non è colpa mia...\n");
     }
-    else if (moltiplicatore >= 5) {
+    else if (moltiplicatore >= 50) {
         printf("Beh... Dai, poteva andare peggio...\n");
     }
-    else if (moltiplicatore >= 2) {
+    else if (moltiplicatore >= 20) {
         printf("Fidati, ti è andata abbastanza bene.\n");
     }
     else {
