@@ -28,7 +28,8 @@ int main(){
 
         printf("Would you like to play again? (y or n)\n");
         printf("Choice: ");
-        if (getchar() == '\n') scelta = getchar();
+        while ( (scelta = getchar()) != '\n' );
+
 
     } while (scelta == 'y');
 

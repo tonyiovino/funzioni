@@ -7,11 +7,11 @@ int caricamento_punti(void);
 int save_chiedi_caricamento_punti(void){
 
     int punti = 0;
-    char scelta;
+    int scelta;
 
     /*do {*/
         printf("Do you want load the game? (y or n): ");
-        if (getchar() == '\n') scelta = getchar();
+        while ( (scelta = getchar()) != '\n' );
 
         if (scelta == 'y'){
             punti = caricamento_punti();            
@@ -19,7 +19,7 @@ int save_chiedi_caricamento_punti(void){
         else if (scelta == 'n'){
             printf("Tutti i tuoi progressi non verranno caricati!\n");
             printf("Sei sicuro di continuare? ");
-            if (getchar() == '\n') scelta = getchar();
+            while ( (scelta = getchar()) != '\n' );
 
             if (scelta == 'y') {
                 printf("\nBuona nuova Partita!\n");
@@ -40,11 +40,12 @@ int save_chiedi_caricamento_punti(void){
 
 void save_chiedi_salvataggio_punti(int punti){
 
-    char scelta;
+    int scelta;
 
     /*do {*/
         printf("Do you want save the game? (y or n): ");
-        if (getchar() == '\n') scelta = getchar();
+        while ( (scelta = getchar()) != '\n' );
+
 
         if (scelta == 'y'){
             salvataggio_punti(punti);
@@ -52,7 +53,7 @@ void save_chiedi_salvataggio_punti(int punti){
         else if (scelta == 'n'){
             printf("Tutti i tuoi progressi andranno persi!\n");
             printf("Sei sicuro di continuare? ");
-            if (getchar() == '\n') scelta = getchar();
+            while ( (scelta = getchar()) != '\n' );
 
             if (scelta == 'y') {
                 printf("\nGood Bye!\n");
