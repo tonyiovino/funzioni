@@ -23,22 +23,22 @@ int guess_controlla_numero(int numero, int tentativo){
     int indovinato = 0;
 
     if (tentativo > numero){
-        printf("Too high. Try again.\n");
+        printf("\t\t**-** Too high. Try again. **-**\n");
     }
     else if (tentativo < numero) {
-        printf("Too low. Try again.\n");
+        printf("\t\t**-** Too low. Try again. **-**\n");
     }
     else {
-        printf("\nExcellent! You guess the number!\n\n");
+        printf("\t\t**$** Excellent! You guess the number! **$**\n");
         indovinato = 1;
     }
 
     return indovinato;
 }
 
-void guess_count_down_or_up(int iniziale, int finale){
+void guess_count_down_or_up(int iniziale, int finale, int stampa){
 
-    int i;
+    int i = 0;
     struct timespec intervallo;
 
     intervallo.tv_sec = 1;
@@ -46,18 +46,24 @@ void guess_count_down_or_up(int iniziale, int finale){
 
     if (iniziale > finale){
         for (i = iniziale; i > finale; i--){
-            printf("%d...\n", i);
+            if (stampa == 1) {
+                printf("%d...\n", i);
+            }
             nanosleep(&intervallo, NULL);
         }
     }
     else if (iniziale < finale){
         for (i = iniziale; i < finale; i++){
-            printf("%d...\n", i);
+            if (stampa == 1) {
+                printf("%d...\n", i);
+            }
             nanosleep(&intervallo, NULL);
         }
     }
     else {
-        printf("%d", iniziale);
+        if (stampa == 1) {
+            printf("%d...\n", i);
+        }
         nanosleep(&intervallo, NULL);
     }
 }
@@ -69,7 +75,7 @@ int guess_add_punti(int tentativi_max, int num_tentativi){
     int rnd_molt = guess_generate_num(1, 100);
 
     printf("Attendiamo l'estrazione del numero...\n");
-    guess_count_down_or_up(3, 0);
+    guess_count_down_or_up(3, 0, 1);
 
     punti = (tentativi_max - num_tentativi) * rnd_molt;
 
@@ -87,7 +93,7 @@ int guess_rm_punti(int tentativi_max, int num_tentativi){
     int rnd_molt = guess_generate_num(1, 100);
  
     printf("Attendiamo l'estrazione del numero...\n");
-    guess_count_down_or_up(3, 0);
+    guess_count_down_or_up(3, 0, 1);
 
     punti = (int)(tentativi_max + num_tentativi) / 2 * rnd_molt;
 
@@ -100,8 +106,10 @@ int guess_rm_punti(int tentativi_max, int num_tentativi){
 
 void guess_print_vittoria(int moltiplicatore){
 
+    putchar('\n');
+
     if (moltiplicatore == 100) {
-        printf("\n"
+        printf(
             "************************\n"
             "*  Hai fatto Jackpot!  *\n"
             "************************\n\n"
@@ -123,6 +131,8 @@ void guess_print_vittoria(int moltiplicatore){
 
 void guess_print_sconfitta(int moltiplicatore){
 
+    putchar('\n');
+
     if (moltiplicatore == 100) {
         printf("Non so che dirti... Non è colpa mia...\n");
     }
@@ -133,7 +143,7 @@ void guess_print_sconfitta(int moltiplicatore){
         printf("Fidati, ti è andata abbastanza bene.\n");
     }
     else {
-        printf("\n"
+        printf(
             "**********************************\n"
             "*  Ti è andata proprio di culo!  *\n"
             "**********************************\n\n"

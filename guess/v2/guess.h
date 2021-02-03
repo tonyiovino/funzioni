@@ -2,7 +2,7 @@
 #define GUESS_H
 
 void guess_init(void);
-void guess_count_down_or_up(int iniziale, int finale);
+void guess_count_down_or_up(int iniziale, int finale, int stampa);
 void guess_print_vittoria(int moltiplicatore);
 void guess_print_sconfitta(int moltiplicatore);
 

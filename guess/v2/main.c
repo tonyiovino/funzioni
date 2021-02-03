@@ -7,22 +7,32 @@ int indovinato_e_aggiorna_punti(int numero, int punti);
 int main(){
 
     int numero;
-    char scelta;
+    int scelta;
     int punti;
 
     guess_init();
 
     punti = save_chiedi_caricamento_punti();
+
     /* INIZIO GIOCO */
     do {
-        printf("Your points: %d\n", punti);
+        if (scelta == 'y') {
+            printf(
+                "***********************************\n"
+                "* Hai iniziato una nuova partita! *\n"
+                "***********************************\n"
+            );
+            guess_count_down_or_up(2, 0, 0);
+        }
+
+        printf("\n$*$*$*$*$ Your points: %d $*$*$*$*$\n", punti);
         printf("\nI have a number between 1 and 1000.\n"
             "Can you guess my number?\n"
             "Please type your first guess.\n\n");
 
         numero = guess_generate_num(1, 1000);
 
-        printf("\n%d\n\n", numero);
+        printf("%d\n\n", numero);
 
         punti = indovinato_e_aggiorna_punti(numero, punti);
 
@@ -30,8 +40,10 @@ int main(){
         printf("Choice: ");
         while ( (scelta = getchar()) == '\n' );
 
+        putchar('\n');
 
     } while (scelta == 'y');
+
 
     save_chiedi_salvataggio_punti(punti);
 
