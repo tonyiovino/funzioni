@@ -32,8 +32,6 @@ int main(){
 
         numero = guess_generate_num(1, 1000);
 
-        printf("%d\n\n", numero);
-
         punti = indovinato_e_aggiorna_punti(numero, punti);
 
         printf("Would you like to play again? (y or n)\n");
