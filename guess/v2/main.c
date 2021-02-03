@@ -3,6 +3,7 @@
 #include "save.h"
 
 int indovinato_e_aggiorna_punti(int numero, int punti);
+void print_name_game(void);
 
 int main(){
 
@@ -11,6 +12,8 @@ int main(){
     int punti;
 
     guess_init();
+
+    print_name_game();
 
     punti = save_chiedi_caricamento_punti();
 
@@ -75,5 +78,20 @@ int indovinato_e_aggiorna_punti(int numero, int punti){
 
     } while (indovinato != 1);
 
+    printf("Aggiunti %d punti.\n\n", punti);
+
     return punti;
+}
+
+void print_name_game(void){
+
+    printf(
+        "\t**************************************************************\n"
+        "\t*   ****    *    *  *****   ****   ****    *     *     ***   *\n"
+        "\t*  *    *   *    *  *      *      *        *     *    *   *  *\n"
+        "\t*  *        *    *  *****   ***    ***      *   *        *   *\n"
+        "\t*  *   ***  *    *  *          *      *      * *       *     *\n"
+        "\t*   *****    ****   *****  ****   ****        *   *   *****  *\n"
+        "\t**************************************************************\n\n"
+    );
 }

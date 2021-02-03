@@ -20,16 +20,16 @@ int save_chiedi_caricamento_punti(void){
         else if (scelta == 'n'){
             printf("Tutti i tuoi progressi non verranno caricati!\n");
             printf("Sei sicuro di continuare? ");
-            while ( (scelta = getchar()) == '\n' ){
-                if (scelta == 'y') {
-                    printf("\nBuona nuova Partita!\n");
-                    punti = 0;
-                    break;
-                }
-                else if (scelta == 'n') {
-                    punti = caricamento_punti();
-                }
+            while ( (scelta = getchar()) == '\n' );
+
+            if (scelta == 'y') {
+                printf("\nBuona nuova Partita!\n");
+                punti = 0;
             }
+            else if (scelta == 'n') {
+                punti = caricamento_punti();
+            }
+
         }
         else {
             printf("\nDigit 'y' for YES or 'n' for NO.\n\n");
@@ -62,7 +62,7 @@ void save_chiedi_salvataggio_punti(int punti){
             }
             else if (scelta == 'y')
 
-            printf("\nGood Bye!\n");
+        printf("\nGood Bye!\n");
         }
         else {
             printf("\nDigit 'y' for YES or 'n' for NO.\n\n");
