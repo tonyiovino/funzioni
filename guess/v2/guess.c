@@ -23,13 +23,13 @@ int guess_controlla_numero(int numero, int tentativo){
     int indovinato = 0;
 
     if (tentativo > numero){
-        printf("\t\t**-** Too high. Try again. **-**\n");
+        printf("\t\t **-** Too high. Try again. **-**\n");
     }
     else if (tentativo < numero) {
-        printf("\t\t**-** Too low. Try again. **-**\n");
+        printf("\t\t **-** Too low. Try again. **-**\n");
     }
     else {
-        printf("\t\t**$** Excellent! You guess the number! **$**\n");
+        printf("\t\t **$** Excellent! You guess the number! **$**\n");
         indovinato = 1;
     }
 
@@ -77,11 +77,13 @@ int guess_add_punti(int tentativi_max, int num_tentativi){
     printf("Attendiamo l'estrazione del numero...\n");
     guess_count_down_or_up(3, 0, 1);
 
-    punti = (tentativi_max - num_tentativi) * rnd_molt;
+    /* Calcolo punti */
+    punti = (int)(tentativi_max / num_tentativi + 1) * rnd_molt;
 
     guess_print_vittoria(rnd_molt);
 
-    printf("Moltiplicatore Random: %d\n\n", rnd_molt);
+    printf("\nMoltiplicatore Random: %d\n", rnd_molt);
+    printf("Aggiunti %d punti.\n\n", punti);
 
     return punti;
 }
@@ -95,13 +97,14 @@ int guess_rm_punti(int tentativi_max, int num_tentativi){
     printf("Attendiamo l'estrazione del numero...\n");
     guess_count_down_or_up(3, 0, 1);
 
-    punti = (int)(tentativi_max + num_tentativi) / 2 * rnd_molt;
+    punti = (int)(tentativi_max / num_tentativi + 1) * rnd_molt;
 
     guess_print_sconfitta(rnd_molt);
 
-    printf("Moltiplicatore Random: %d\n", rnd_molt);
+    printf("\nMoltiplicatore Random: %d\n", rnd_molt);
+    printf("Aggiunti %d punti.\n\n", punti*-1);
 
-    return -1 * punti;
+    return punti;
 }
 
 void guess_print_vittoria(int moltiplicatore){

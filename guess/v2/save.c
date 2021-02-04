@@ -60,13 +60,12 @@ void save_chiedi_salvataggio_punti(int punti){
             if (scelta == 'n') {
                 salvataggio_punti(punti);
             }
-            else if (scelta == 'y')
-
-        printf("\nGood Bye!\n");
+            else if (scelta == 'y'){}
         }
         else {
             printf("\nDigit 'y' for YES or 'n' for NO.\n\n");
         }
+        printf("\nGood Bye!\n");
 
     } while ( ((scelta = getchar()) != '\n') && (scelta != 'y' || scelta != 'n') );
 }

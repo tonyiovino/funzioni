@@ -21,14 +21,14 @@ int main(){
     do {
         if (scelta == 'y') {
             printf(
-                "***********************************\n"
-                "* Hai iniziato una nuova partita! *\n"
-                "***********************************\n"
+                "\t\t***********************************\n"
+                "\t\t* Hai iniziato una nuova partita! *\n"
+                "\t\t***********************************\n"
             );
             guess_count_down_or_up(2, 0, 0);
         }
 
-        printf("\n$*$*$*$*$ Your points: %d $*$*$*$*$\n", punti);
+        printf("\n\t\t*$*$*$*$ Your points: %d $*$*$*$*\n", punti);
         printf("\nI have a number between 1 and 1000.\n"
             "Can you guess my number?\n"
             "Please type your first guess.\n\n");
@@ -77,8 +77,6 @@ int indovinato_e_aggiorna_punti(int numero, int punti){
         if (indovinato == 1) punti += guess_add_punti(tentativi_max, num_tentativi);
 
     } while (indovinato != 1);
-
-    printf("Aggiunti %d punti.\n\n", punti);
 
     return punti;
 }
