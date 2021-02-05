@@ -73,20 +73,25 @@ int guess_add_e_rm_punti(int tentativi_max, int num_tentativi, int hai_indovinat
     int punti = 0;
     int rnd_molt = guess_generate_num(1, 100); /* Moltiplicatore Random */
 
-    printf("Attendiamo l'estrazione del numero...\n");
-    guess_count_down_or_up(3, 0, 1);
-
     /* Calcolo punti */
-    punti = (int)(tentativi_max / num_tentativi + 1) * rnd_molt;
+    punti = (int)((num_tentativi / tentativi_max) * 10 + 1) * rnd_molt;
+
+    if (num_tentativi == tentativi_max && hai_indovinato != 1){
+        printf("\nYou have exceeded the limit of attempts (%d)\n", tentativi_max);
+        printf("The number was %d\n\n", numero);
+
+        punti *= -1;
+    }
+    guess_count_down_or_up(1, 0, 0);
+
+    printf("\nAttendiamo l'estrazione del numero...\n");
+    guess_count_down_or_up(3, 0, 1);
 
     if (hai_indovinato == 1){
         guess_print_vittoria(rnd_molt);
     }
-    else if (num_tentativi == tentativi_max && hai_indovinato != 1){
-        printf("\nYou have exceeded the limit of attempts (%d)\n", tentativi_max);
-        printf("The number was %d\n\n", numero);
+    else { 
         guess_print_sconfitta(rnd_molt);
-        punti *= -1;
     }
 
     printf("\nMoltiplicatore Random: %d\n", rnd_molt);
@@ -94,45 +99,6 @@ int guess_add_e_rm_punti(int tentativi_max, int num_tentativi, int hai_indovinat
 
     return punti;
 }
-
-// int guess_add_punti(int tentativi_max, int num_tentativi){
-
-//     // int punti;
-//     // /* Moltiplicatore Random */
-//     // int rnd_molt = guess_generate_num(1, 100);
-
-//     // printf("Attendiamo l'estrazione del numero...\n");
-//     // guess_count_down_or_up(3, 0, 1);
-
-//     // /* Calcolo punti */
-//     // punti = (int)(tentativi_max / num_tentativi + 1) * rnd_molt;
-
-//     guess_print_vittoria(rnd_molt);
-
-//     printf("\nMoltiplicatore Random: %d\n", rnd_molt);
-//     printf("Aggiunti %d punti.\n\n", punti);
-
-//     return punti;
-// }
-
-// int guess_rm_punti(int tentativi_max, int num_tentativi){
-
-//     // int punti;
-//     // /* Moltiplicatore Random */
-//     // int rnd_molt = guess_generate_num(1, 100);
- 
-//     // printf("Attendiamo l'estrazione del numero...\n");
-//     // guess_count_down_or_up(3, 0, 1);
-
-//     // punti = (int)(tentativi_max / num_tentativi + 1) * rnd_molt;
-
-//     guess_print_sconfitta(rnd_molt);
-
-//     printf("\nMoltiplicatore Random: %d\n", rnd_molt);
-//     printf("Aggiunti %d punti.\n\n", punti*-1);
-
-//     return punti;
-// }
 
 void guess_print_vittoria(int moltiplicatore){
 

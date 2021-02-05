@@ -67,7 +67,7 @@ int rigioca(void){
 int input_char(int input){
 
     int temp;
-    
+
     /* Elimina i newline precedenti */
     while ( (temp = getchar()) != '\n' );
 

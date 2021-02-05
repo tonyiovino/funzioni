@@ -9,13 +9,13 @@ int main(){
 
     int numero;
     int scelta;
-    int punti = 0; // DEGUB Togli 0
+    int punti;
 
     guess_init();
 
     print_name_game();
 
-    // punti = save_chiedi_caricamento_punti();
+    punti = save_chiedi_caricamento_punti();
 
     /* INIZIO GIOCO */
     do {
@@ -25,10 +25,10 @@ int main(){
                 "\t\t* Hai iniziato una nuova partita! *\n"
                 "\t\t***********************************\n"
             );
-            // guess_count_down_or_up(2, 0, 0);
+            guess_count_down_or_up(2, 0, 0);
         }
 
-        printf("\n\t\t*$*$*$*$ Your points: %d $*$*$*$*\n", punti);
+        printf("\n\t\t\t\t\t$*$*$*$ Your points: %d $*$*$*$\n", punti);
         printf("\nI have a number between 1 and 1000.\n"
             "Can you guess my number?\n"
             "Please type your first guess.\n\n");
@@ -39,47 +39,17 @@ int main(){
 
         printf("Would you like to play again? (y or n)\n");
         printf("Choice: ");
-        while ( (scelta = getchar()) == '\n' );
+        scelta = save_input_char(scelta);
 
         putchar('\n');
 
     } while (scelta == 'y');
 
-
     save_chiedi_salvataggio_punti(punti);
 
+    printf("\nGood Bye!\n");
+
     return 0;
-}
-
-int indovinato_e_aggiorna_punti(int numero, int punti){
-
-    int tentativi_max = 10, num_tentativi = 0;
-    int tentativo;
-    int hai_indovinato;
-
-    /* Tentativi */
-    do {
-        // /* Raggiunto il limite dei tentativi */
-        // if (! (num_tentativi < tentativi_max) ){
-        //     printf("\nYou have exceeded the limit of attempts (%d)\n", tentativi_max);
-        //     printf("The number was %d\n\n", numero);
-        //     punti += guess_rm_punti(tentativi_max, num_tentativi);
-        //     break;
-        // }
-
-        printf("Tentativo %d: ", ++num_tentativi);
-        scanf("%d", &tentativo);
-
-        hai_indovinato = guess_controlla_numero(numero, tentativo);
-
-        // if (hai_indovinato == 1) punti += guess_add_punti(tentativi_max, num_tentativi);
-        if (tentativi_max == num_tentativi || hai_indovinato == 1) {
-            punti += guess_add_e_rm_punti(tentativi_max, num_tentativi, hai_indovinato, numero);
-        }
-
-    } while ( (tentativi_max > num_tentativi && hai_indovinato == 0));
-
-    return punti;
 }
 
 void print_name_game(void){
@@ -93,4 +63,24 @@ void print_name_game(void){
         "\t*   *****    ****   *****  ****   ****        *   *   *****  *\n"
         "\t**************************************************************\n\n"
     );
+}
+
+int indovinato_e_aggiorna_punti(int numero, int punti){
+
+    int tentativi_max = 10, num_tentativi = 0;
+    int tentativo;
+    int hai_indovinato;
+
+    /* Tentativi e controlla se indovinato */
+    do {
+        printf("Tentativo %d: ", ++num_tentativi);
+        scanf("%d", &tentativo);
+
+        hai_indovinato = guess_controlla_numero(numero, tentativo);
+
+    } while ( (tentativi_max > num_tentativi && hai_indovinato == 0));
+
+    punti += guess_add_e_rm_punti(tentativi_max, num_tentativi, hai_indovinato, numero);
+
+    return punti;
 }

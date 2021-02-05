@@ -12,15 +12,15 @@ int save_chiedi_caricamento_punti(void){
 
     do {
         printf("Do you want load the game? (y or n): ");
-        while ( (scelta = getchar()) == '\n' );
+        scelta = save_input_char(scelta);
 
         if (scelta == 'y'){
             punti = caricamento_punti();
         }
         else if (scelta == 'n'){
-            printf("Tutti i tuoi progressi non verranno caricati!\n");
+            printf("\nTutti i tuoi progressi non verranno caricati!\n");
             printf("Sei sicuro di continuare? ");
-            while ( (scelta = getchar()) == '\n' );
+            scelta = save_input_char(scelta);
 
             if (scelta == 'y') {
                 printf("\nBuona nuova Partita!\n");
@@ -35,8 +35,7 @@ int save_chiedi_caricamento_punti(void){
             printf("\nDigit 'y' for YES or 'n' for NO.\n\n");
         }
 
-    } while ( ((scelta = getchar()) != '\n') && (scelta != 'y' || scelta != 'n') );
-
+    } while (scelta != 'y' && scelta != 'n');
 
     return punti;
 }
@@ -48,14 +47,14 @@ void save_chiedi_salvataggio_punti(int punti){
     do {
         printf("Do you want save the game? (y or n): ");
 
-        while ( (scelta = getchar()) == '\n' );
+        scelta = save_input_char(scelta);
         if (scelta == 'y'){
             salvataggio_punti(punti);
         }
         else if (scelta == 'n'){
-            printf("Tutti i tuoi progressi andranno persi!\n");
+            printf("\nTutti i tuoi progressi andranno persi!\n");
             printf("Sei sicuro di continuare? ");
-            while ( (scelta = getchar()) == '\n' );
+            scelta = save_input_char(scelta);
 
             if (scelta == 'n') {
                 salvataggio_punti(punti);
@@ -65,16 +64,14 @@ void save_chiedi_salvataggio_punti(int punti){
         else {
             printf("\nDigit 'y' for YES or 'n' for NO.\n\n");
         }
-        printf("\nGood Bye!\n");
 
-    } while ( ((scelta = getchar()) != '\n') && (scelta != 'y' || scelta != 'n') );
+    } while (scelta != 'y' && scelta != 'n');
 }
 
 int caricamento_punti(void){
 
     FILE *file_punti = fopen("saved_points.txt", "r");
     int punti;
-
 
     fprintf(stdout, "\nWait a moment...\n");
     guess_count_down_or_up(2, 0, 0);
@@ -98,7 +95,6 @@ void salvataggio_punti(int punti){
 
     FILE *file_punti = fopen("saved_points.txt", "w");
 
-
     fprintf(stdout, "\nWait a moment...\n");
     guess_count_down_or_up(2, 0, 0);
 
@@ -107,4 +103,19 @@ void salvataggio_punti(int punti){
     fprintf(stdout, "Salvataggio Completato!\n");
 
     fclose(file_punti);
+}
+
+
+int save_input_char(int input){
+
+    int temp;
+
+    /* Elimina i newline precedenti */
+    while (getchar() != '\n') {
+        input = getchar();
+        if (input != '\n') {
+            while ( (temp = getchar()) != '\n' );
+        }
+    }
+    return input;
 }
