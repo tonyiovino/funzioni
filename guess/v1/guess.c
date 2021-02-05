@@ -1,6 +1,6 @@
+#include <stdio.h>
 #include "guess.h"
 #include "random.h"
-#include <stdio.h>
 
 void guess_init(void){
     random_init();
