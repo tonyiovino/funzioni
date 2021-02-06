@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include "guess.h"
 #include "save.h"
+#include "guess.h"
+#include "io.h"
 
 int indovinato_e_aggiorna_punti(int numero, int punti);
 void print_name_game(void);
@@ -15,9 +16,10 @@ int main(){
 
     print_name_game();
 
+    /* Caricamento di un salvataggio */
     punti = save_chiedi_caricamento_punti();
 
-    /* INIZIO GIOCO */
+    /* Inizia Il Gioco */
     do {
         if (scelta == 'y') {
             printf(
@@ -33,18 +35,22 @@ int main(){
             "Can you guess my number?\n"
             "Please type your first guess.\n\n");
 
+        /* Genera un numero da 1 a 1000*/
         numero = guess_generate_num(1, 1000);
 
+        /* Esegue i tentativi, vede se hai vinto o no, e da i punti */
         punti = indovinato_e_aggiorna_punti(numero, punti);
 
         printf("Would you like to play again? (y or n)\n");
         printf("Choice: ");
-        scelta = save_input_char(scelta);
+        scelta = getchar();
+        io_clean_buffer();
 
         putchar('\n');
 
     } while (scelta == 'y');
 
+    /* Salvataggio Partita */
     save_chiedi_salvataggio_punti(punti);
 
     printf("\nGood Bye!\n");

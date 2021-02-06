@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "save.h"
 #include "guess.h"
+#include "io.h"
 
 void salvataggio_punti(int punti);
 int caricamento_punti(void);
@@ -12,23 +13,32 @@ int save_chiedi_caricamento_punti(void){
 
     do {
         printf("Do you want load the game? (y or n): ");
-        scelta = save_input_char(scelta);
+        scelta = getchar();
+        io_clean_buffer();
 
         if (scelta == 'y'){
             punti = caricamento_punti();
         }
         else if (scelta == 'n'){
-            printf("\nTutti i tuoi progressi non verranno caricati!\n");
-            printf("Sei sicuro di continuare? ");
-            scelta = save_input_char(scelta);
 
-            if (scelta == 'y') {
-                printf("\nBuona nuova Partita!\n");
-                punti = 0;
-            }
-            else if (scelta == 'n') {
-                punti = caricamento_punti();
-            }
+            do{
+                printf("\nTutti i tuoi progressi non verranno caricati!\n");
+                printf("Sei sicuro di continuare? ");
+                scelta = getchar();
+                io_clean_buffer();
+
+                if (scelta == 'y') {
+                    printf("\nBuona nuova Partita!\n");
+                    punti = 0;
+                }
+                else if (scelta == 'n') {
+                    punti = caricamento_punti();
+                }
+                else {
+                    printf("\nDigit 'y' for YES or 'n' for NO.\n\n");
+                }
+
+            } while (scelta != 'y' && scelta != 'n');
 
         }
         else {
@@ -47,19 +57,29 @@ void save_chiedi_salvataggio_punti(int punti){
     do {
         printf("Do you want save the game? (y or n): ");
 
-        scelta = save_input_char(scelta);
+        scelta = getchar();
+        io_clean_buffer();
         if (scelta == 'y'){
             salvataggio_punti(punti);
         }
         else if (scelta == 'n'){
-            printf("\nTutti i tuoi progressi andranno persi!\n");
-            printf("Sei sicuro di continuare? ");
-            scelta = save_input_char(scelta);
+            do{
+                printf("\nTutti i tuoi progressi andranno persi!\n");
+                printf("Sei sicuro di continuare? ");
+                scelta = getchar();
+                io_clean_buffer();
 
-            if (scelta == 'n') {
-                salvataggio_punti(punti);
-            }
-            else if (scelta == 'y'){}
+                if (scelta == 'n') {
+                    salvataggio_punti(punti);
+                }
+                else if (scelta == 'y'){
+                    printf("Chissà se è per codardia o per pietà...\n");
+                }
+                else {
+                    printf("\nDigit 'y' for YES or 'n' for NO.\n\n");
+                }
+
+            } while (scelta != 'y' && scelta != 'n');
         }
         else {
             printf("\nDigit 'y' for YES or 'n' for NO.\n\n");
@@ -103,19 +123,4 @@ void salvataggio_punti(int punti){
     fprintf(stdout, "Salvataggio Completato!\n");
 
     fclose(file_punti);
-}
-
-
-int save_input_char(int input){
-
-    int temp;
-
-    /* Elimina i newline precedenti */
-    while (getchar() != '\n') {
-        input = getchar();
-        if (input != '\n') {
-            while ( (temp = getchar()) != '\n' );
-        }
-    }
-    return input;
 }

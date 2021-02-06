@@ -90,7 +90,7 @@ int guess_add_e_rm_punti(int tentativi_max, int num_tentativi, int hai_indovinat
     if (hai_indovinato == 1){
         guess_print_vittoria(rnd_molt);
     }
-    else { 
+    else {
         guess_print_sconfitta(rnd_molt);
     }
 
