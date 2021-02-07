@@ -31,9 +31,11 @@ int main(){
         }
 
         printf("\n\t\t\t\t\t$*$*$*$ Your points: %d $*$*$*$\n", punti);
-        printf("\nI have a number between 1 and 1000.\n"
+        printf(
+            "\nI have a number between 1 and 1000.\n"
             "Can you guess my number?\n"
-            "Please type your first guess.\n\n");
+            "Please type your first guess.\n\n"
+        );
 
         /* Genera un numero da 1 a 1000*/
         numero = guess_generate_num(1, 1000);
@@ -81,6 +83,7 @@ int indovinato_e_aggiorna_punti(int numero, int punti){
     do {
         printf("Tentativo %d: ", ++num_tentativi);
         scanf("%d", &tentativo);
+        io_clean_buffer();
 
         hai_indovinato = guess_controlla_numero(numero, tentativo);
 

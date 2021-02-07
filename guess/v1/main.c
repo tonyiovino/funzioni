@@ -14,9 +14,11 @@ int main(){
     guess_init();
 
     do {
-        printf("I have a number between 1 and 1000.\n"
+        printf(
+            "I have a number between 1 and 1000.\n"
             "Can you guess my number?\n"
-            "Please type your first guess.\n\n");
+            "Please type your first guess.\n\n"
+        );
 
         numero = guess_generate_num(1, 1000);
 

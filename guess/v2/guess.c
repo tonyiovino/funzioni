@@ -114,7 +114,7 @@ void guess_print_vittoria(int moltiplicatore){
     else if (moltiplicatore >= 50) {
         printf("Hai avuto molta fortuna!\n");
     }
-    else if (moltiplicatore >= 20) {
+    else if (moltiplicatore >= 10) {
         printf(
             "Non è il massimo, ma magari la fortuna ti\n"
             "assisterà la prossima volta!\n"
@@ -135,7 +135,7 @@ void guess_print_sconfitta(int moltiplicatore){
     else if (moltiplicatore >= 50) {
         printf("Beh... Dai, poteva andare peggio...\n");
     }
-    else if (moltiplicatore >= 20) {
+    else if (moltiplicatore >= 10) {
         printf("Fidati, ti è andata abbastanza bene.\n");
     }
     else {
