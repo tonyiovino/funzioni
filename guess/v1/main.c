@@ -19,7 +19,6 @@ int main(){
             "Please type your first guess.\n\n");
 
         numero = guess_generate_num(1, 1000);
-        printf("%d", numero);
 
         tenta_e_controlla_indovinato(numero);
 
