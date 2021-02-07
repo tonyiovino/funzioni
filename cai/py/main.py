@@ -2,14 +2,14 @@ import cai
 
 def rispondi_e_controlla(a, b, risposta_esatta):
 
-    num_esatte = 0
+    esatta = 0
 
     print(f"Quanto fa {a} per {b}? (CTRL+C per uscire)")
     risposta = int(input("Risposta: "))
 
-    num_esatte = num_esatte + cai.generate_string(risposta, risposta_esatta)
+    esatta = cai.check_result_and_generate_string(risposta, risposta_esatta)
 
-    return num_esatte
+    return esatta
 
 def controlla_risposte_esatte(num_esatte, num_domande):
 

@@ -3,21 +3,21 @@ import random
 def generate_num(min, max):
     return random.randint(min, max)
 
-def generate_string(risposta, risposta_esatta):
+def check_result_and_generate_string(risposta, risposta_esatta):
 
     num = generate_num(1, 4)
-    num_esatte = 0
+    esatta = 0
 
     if risposta == risposta_esatta:
         print_risposta_esatta(num)
-        num_esatte = num_esatte + 1
+        esatta = 1
 
     else:
         print_risposta_errata(num)
-    
+
     print('\n')
 
-    return num_esatte
+    return esatta
 
 def print_risposta_esatta(num):
     if num == 1:
