@@ -41,6 +41,7 @@ void tenta_e_controlla_indovinato(int numero){
     do {
         printf("Tentativo: ");
         scanf("%d", &tentativo);
+        io_clean_buffer();
 
         indovinato = guess_controlla_numero(numero, tentativo);
 
