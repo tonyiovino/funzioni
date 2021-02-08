@@ -17,9 +17,11 @@ def controlla_risposte_esatte(num_esatte, num_domande):
 
     print(f"Your rate is: {percentuale}%")
 
-    if percentuale < 75: print("Please ask your instructor for extra help")
+    if percentuale < 75:
+        print("Please ask your instructor for extra help")
 
-    else: print("Good Job!")
+    else:
+        print("Good Job!")
 
 num_domande = 10
 num_risposte = 0
