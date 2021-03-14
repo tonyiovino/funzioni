@@ -3,7 +3,7 @@ import dragon
 play = ''
 punti = 0
 
-while play == 'y' or play != 'n':
+while play != 'n':
 	dragon.init_print()
 
 	scelta = dragon.scegli_caverna()
@@ -18,4 +18,3 @@ while play == 'y' or play != 'n':
 		print("Good Luck!\n")
 	elif play == 'n':
 		print("Good Bye!\n")
-		break
