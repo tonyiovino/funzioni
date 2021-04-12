@@ -18,7 +18,12 @@ int main(){
 
 int fibonacci(int n){
 
-	static int cache[100];
+	static int cache[47];
+
+	if (n > 47) {
+		printf("Il limite massimo è 47\n\n");
+		return n;
+	}
 
 	return fibonacci_helper(n, cache);
 }
