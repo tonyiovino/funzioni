@@ -46,7 +46,7 @@ output_punto(punto2)
 
 
 #assignment
-distanza = distanza(punto1, punto2)
+distance = distanza(punto1, punto2)
 
 #result print
-print("La distanza è:", distanza)
+print("La distanza è:", distance)
