@@ -27,14 +27,14 @@ int fibonacci_helper(int n, int cache[], int size_cache) {
 
 	if (n == 0 || n == 1) return n;
 
-	if (cache[n]){
-		return cache[n];
-	}
-
 	if (n > size_cache) {
 		printf("Il limite massimo è %d\n\n", size_cache);
 		return n;
 	}
+	else if (cache[n]){
+		return cache[n];
+	}
+
 
 	cache[n] = fibonacci_helper(n-1, cache, size_cache) + fibonacci_helper(n-2, cache, size_cache);
 
