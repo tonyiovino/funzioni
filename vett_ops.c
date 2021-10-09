@@ -37,7 +37,7 @@ void vett_raddoppia(int *pv, int size){
 	int i;
 
 	for (i = 0; i < size; i++) {
-		*(pv+i) = (*(pv+i) + i) * 2;
+		*(pv+i) *= 2;
 	}
 }
 
