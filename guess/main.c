@@ -20,7 +20,8 @@ int main(){
             "Please type your first guess.\n\n"
         );
 
-        numero = guess_generate_num(1, 1000);
+        /* numero = guess_generate_num(1, 1000); */
+        numero = 1;
 
         tenta_e_controlla_indovinato(numero);
 
@@ -61,9 +62,11 @@ int rigioca(void){
         printf("Would you like to play again? (y or n)\n");
         printf("Choice: ");
         scelta = getchar();
-        io_clean_buffer();
+        putchar('\n');
 
-    } while (scelta != 'y' && scelta != 'n');
+    } while ((scelta != 'y' && scelta != 'n') || scelta == '\n');
+
+    io_clean_buffer();
 
     return scelta;
 }
