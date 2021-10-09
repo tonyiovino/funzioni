@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int fibonacci_helper(int n, int cache[]);
+int fibonacci_helper(int n, int cache[], int size_cache);
 int fibonacci(int n);
 
 int main(){
@@ -25,10 +25,10 @@ int fibonacci(int n){
 		return n;
 	}
 
-	return fibonacci_helper(n, cache);
+	return fibonacci_helper(n, cache, 47);
 }
 
-int fibonacci_helper(int n, int cache[]) {
+int fibonacci_helper(int n, int cache[], int size_cache) {
 
 	if (n == 0 || n == 1) return n;
 
@@ -36,7 +36,7 @@ int fibonacci_helper(int n, int cache[]) {
 		return cache[n];
 	}
 
-	cache[n] = fibonacci_helper(n-1, cache) + fibonacci_helper(n-2, cache);
+	cache[n] = fibonacci_helper(n-1, cache, 47) + fibonacci_helper(n-2, cache, 47);
 
 	return cache[n];
 }
