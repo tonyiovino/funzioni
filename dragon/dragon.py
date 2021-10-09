@@ -1,9 +1,6 @@
 import random
 import time
 
-def generate_num(min, max):
-	return random.randint(min, max)
-
 def init_print():
 	print("""You are in a land full of dragons. In front of you, you see two caves.
 In one cave, the dragon is friendly and will share his treasure with you.
