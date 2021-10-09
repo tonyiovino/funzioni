@@ -63,7 +63,7 @@ int rigioca(void){
         scelta = getchar();
         io_clean_buffer();
 
-    } while (scelta != 'y' && scelta != 'n' && scelta != '\n');
+    } while (scelta != 'y' && scelta != 'n');
 
     return scelta;
 }
